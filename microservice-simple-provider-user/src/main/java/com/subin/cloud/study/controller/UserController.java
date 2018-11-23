@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Description:
  * @version: 1.0
@@ -25,9 +27,10 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable Long id){
+    public List<User> findById(@PathVariable Long id){
         LOG.info("查询客户信息,id:"+id);
         User findOne = userRepository.findOne(id);
-        return findOne;
+        List<User> all = userRepository.findAll();
+        return all;
     }
 }
