@@ -27,10 +27,10 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/{id}")
-    public List<User> findById(@PathVariable Long id){
+    public User findById(@PathVariable Long id){
         LOG.info("查询客户信息,id:"+id);
         User findOne = userRepository.findOne(id);
-        List<User> all = userRepository.findAll();
-        return all;
+        //List<User> all = userRepository.findAll();
+        return findOne;
     }
 }
